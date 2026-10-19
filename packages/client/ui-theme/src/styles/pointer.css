@@ -1,0 +1,71 @@
+/* The circular companion replaces the system arrow on mouse surfaces. */
+body[data-dsh-pointer-enabled], body[data-dsh-pointer-enabled] * {
+  cursor: none !important;
+}
+body[data-dsh-pointer-enabled] :is(input, textarea, [contenteditable]:not([contenteditable='false']), [contenteditable]:not([contenteditable='false']) *) {
+  cursor: text !important;
+}
+body[data-dsh-pointer-enabled] :is([data-side='sidebar'], [data-side='rightbar']) {
+  cursor: col-resize !important;
+}
+
+[data-dsh-pointer-trail] {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease;
+  transform: translate3d(-100px, -100px, 0);
+}
+[data-dsh-pointer-trail][data-visible] { opacity: 1; }
+[data-dsh-pointer-halo], [data-dsh-pointer-ripple] {
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  corner-shape: round;
+  pointer-events: none;
+}
+[data-dsh-pointer-halo] {
+  border: 1px solid color-mix(in srgb, var(--dsw-alias-daily-accent) 35%, transparent);
+  background: color-mix(in srgb, var(--dsw-alias-daily-pill) 38%, transparent);
+  box-shadow: 0 0 20px var(--dsw-alias-daily-shadow);
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+[data-dsh-pointer-trail][data-interactive] [data-dsh-pointer-halo] {
+  transform: scale(.65);
+  border-color: color-mix(in srgb, var(--dsw-alias-daily-accent) 65%, transparent);
+  background: color-mix(in srgb, var(--dsw-alias-daily-pill) 60%, transparent);
+}
+[data-dsh-pointer-trail][data-pressed] [data-dsh-pointer-halo] { transform: scale(.45); }
+[data-dsh-pointer-ripple] {
+  border: 1px solid color-mix(in srgb, var(--dsw-alias-daily-accent) 35%, transparent);
+  opacity: 0;
+}
+[data-dsh-pointer-trail][data-pulse] [data-dsh-pointer-ripple] { animation: dsh-pointer-ripple 420ms ease-out; }
+@keyframes dsh-pointer-ripple {
+  from { opacity: .3; transform: scale(.4); }
+  to { opacity: 0; transform: scale(1.65); }
+}
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  [data-dsh-pointer-trail] { display: none; }
+}
+
+[data-dsh-pointer-dot] {
+  position: absolute;
+  left: -4px;
+  top: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  corner-shape: round;
+  background: color-mix(in srgb, var(--dsw-alias-daily-accent) 65%, var(--dsw-alias-daily-pill));
+  pointer-events: none;
+}

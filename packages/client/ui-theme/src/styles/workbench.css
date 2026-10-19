@@ -1,0 +1,67 @@
+/* Shared studio material palette, independent of the surrounding appearance. */
+body {
+  --dsw-alias-brand-image-filter: none;
+  --dsw-alias-brand-image-blend: multiply;
+  --dsw-alias-studio-shell: #10120f;
+  --dsw-alias-studio-dark: #141710;
+  --dsw-alias-studio-ink: #f2f4e9;
+  --dsw-alias-studio-muted: #b1b7a7;
+  --dsw-alias-studio-paper: #d9decf;
+  --dsw-alias-studio-accent: #dbfb77;
+  --dsw-alias-studio-accent-glow: #cde98466;
+  --dsw-alias-studio-card: #20261e;
+  --dsw-alias-studio-card-hover: #303b2c;
+  --dsw-alias-studio-mist: #89967a;
+  --dsw-alias-studio-glass: #edf7d31c;
+  --dsw-alias-studio-stroke: #edf7d335;
+  --dsw-alias-studio-edge: #e6f6b18c;
+  --dsw-alias-studio-shadow: #080d0877;
+  --dsw-alias-workbench-wash: #aebd902b;
+  --dsw-alias-state-business-primary: #526b19;
+  --dsw-alias-state-business-tertiary: #e9efda;
+  --dsw-alias-link: #526b19;
+}
+body[data-ds-dark-theme] {
+  --dsw-alias-brand-image-filter: invert(1);
+  --dsw-alias-brand-image-blend: screen;
+  --dsw-alias-bg-base: #0e100e;
+  --dsw-alias-bg-layer-1: #191c18;
+  --dsw-alias-bg-layer-2: #22261f;
+  --dsw-alias-bg-layer-3: #30362a;
+  --dsw-alias-label-primary: #edf0e6;
+  --dsw-alias-label-primary-bluish: #edf0e6;
+  --dsw-alias-label-secondary: #c5cbbd;
+  --dsw-alias-label-tertiary: #a4ad99;
+  --dsw-alias-label-caption: #909985;
+  --dsw-alias-border-l1: #dae8c60e;
+  --dsw-alias-border-l2: #dae8c61c;
+  --dsw-alias-border-l3: #dae8c627;
+  --dsw-alias-border-l4: #dae8c63d;
+  --dsw-alias-state-business-primary: #dbfb77;
+  --dsw-alias-state-business-tertiary: #343f21;
+  --dsw-alias-brand-primary: #dbfb77;
+  --dsw-alias-button-primary-fill: #dbfb77;
+  --dsw-alias-link: #dbfb77;
+  --dsw-specific-sidebar-fill: #141712;
+  --dsw-specific-sidebar-nav-item-active: #2c3423;
+  --dsw-specific-sidebar-nav-item-active-accent: #343f21;
+  --dsw-specific-sidebar-nav-item-hover: #22281e;
+  --dsw-specific-input-major: #20251c;
+  --dsw-alias-workbench-wash: #8ba55317;
+}
+
+/* Approved character canvas retains its paper palette in both app themes. */
+:root {
+  --dsw-alias-daily-accent: #71539d;
+  --dsw-alias-daily-pill: #e4dcf4;
+  --dsw-alias-daily-shadow: #b8a5d640;
+  --dsw-alias-daily-input: #fffafd;
+  --dsw-alias-daily-border: #95829f;
+  --dsw-alias-daily-paper: #f4f0f8;
+  --dsw-alias-daily-ink: #151318;
+  --dsw-alias-daily-muted: #74647e;
+  --dsw-alias-daily-glass: #ffffff85;
+  --dsw-alias-daily-line: #d7cbdF;
+  --dsw-alias-daily-focus: #665071;
+  --dsw-alias-daily-button: #33213e;
+}

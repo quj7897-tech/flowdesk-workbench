@@ -1,0 +1,40 @@
+- button "新建会话"
+- button "收起侧边栏"
+- button "新建会话": 新会话
+- navigation "全局面板":
+  - button "插件"
+  - button "自动化任务"
+- text: 工作区
+- button "搜索会话"
+- textbox "搜索会话名称"
+- button "视图选项"
+- button "添加工作区"
+- tree "会话":
+  - treeitem "workspace" [expanded]
+  - treeitem "新会话" [selected]
+- button "设置"
+- banner:
+  - button "打开右侧边栏"
+- region "个人工作台":
+  - text: 个人工作台
+  - group "灵感展示":
+    - button "构建" [pressed]
+    - button "探索"
+    - button "创作"
+  - text: 预览版 OKOK DEEPSEEK HARNESS / 01
+  - heading "让想法，自由生长。" [level=1]
+  - text: 从一个念头，到下一件作品。
+  - button "01 / BUILD 构建新作品 网站、应用与下一个好点子"
+  - button "02 / EXPLORE 探索与整理 连接资料，让思路清晰起来"
+  - text: IDEAS IN MOTION STUDY — 001 YOUR NEXT POSSIBILITY
+  - heading "构建" [level=2]
+  - paragraph: 把无限可能，交给下一次对话。
+  - text: 01 / 03 一个空间，连接想法与行动。 选择工作区，即刻开始 ↘
+- button "选择工作区": workspace
+- button "标准模式"
+- textbox "描述你想要构建的内容, / 调用指令, @ 文件或对话"
+- button "添加文件或调用指令"
+- button "访问模式，当前：工作区内修改": 工作区内修改
+- button "计划模式已开启，按下关闭": 计划
+- button "选择模型，当前 DeepSeek-V4-Flash": DeepSeek-V4-Flash
+- button "发送消息" [disabled]

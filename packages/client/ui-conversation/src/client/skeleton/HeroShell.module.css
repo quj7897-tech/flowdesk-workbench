@@ -1,0 +1,97 @@
+.root { position: relative; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.85fr) minmax(0,1fr); grid-template-areas: 'left logo right'; column-gap: clamp(1.5rem,3cqw,3rem); row-gap: 1rem; align-content: start; align-items: start; width: 100%; box-sizing: border-box; min-height: 600px; padding: 2rem 4% 0; color: var(--dsw-alias-daily-ink); background: var(--dsw-alias-daily-paper); border-radius: 1.125rem; isolation: isolate; container-type: inline-size; font-size: 1rem; line-height: 1.5; }
+.artwork { position: absolute; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
+/* Keep the crown below the wordmark when a wide window scales the artwork taller than its scene. */
+.artwork > svg { display: block; position: absolute; bottom: min(0px, calc(100% - 38.2cqw - 6.5rem)); left: 12.5%; width: 75%; max-width: none; height: auto; aspect-ratio: 1920 / 1288; }
+.wordmark { grid-area: logo; justify-self: center; width: min(100%,14rem); height: 4.5rem; transform: translateY(-1.75rem); mix-blend-mode: multiply; pointer-events: none; }
+.wordmark svg { width: 100%; height: 100%; filter: grayscale(1) contrast(1.2); }
+.leftCopy { grid-area: left; }
+.rightCopy { grid-area: right; }
+.leftCopy, .rightCopy { position: relative; display: grid; align-content: start; grid-template-rows: auto auto auto; gap: .75rem; min-width: 0; overflow-wrap: anywhere; }
+.eyebrow { display: inline-flex; align-items: center; gap: .5rem; justify-self: start; padding: .375rem .875rem; margin-bottom: 0; background: var(--dsw-alias-daily-pill); color: var(--dsw-alias-daily-accent); border-radius: 2rem; font-size: 1rem; line-height: 1.5; }
+.eyebrow svg { flex: none; }
+.leftCopy h1, .rightCopy h2 { margin: 0; font-size: clamp(1.75rem, 2.65cqw, 2.5rem); font-weight: 500; line-height: 1.35; letter-spacing: 0; text-wrap: balance; }
+.root button { border: 0; background: none; color: inherit; cursor: pointer; font: inherit; padding: 0; }
+.root button:focus-visible, .dailySidebar button:focus-visible, .dialog :is(button,a,input,textarea):focus-visible { outline: 2px solid var(--dsw-alias-daily-focus); outline-offset: 3px; }
+.leftCopy p, .rightCopy p { font-size: 1.125rem; line-height: 1.6; margin: .25rem 0 0; color: var(--dsw-alias-daily-muted); }
+.dailySidebar { width: 100%; min-width: 0; color: var(--dsw-alias-daily-ink); font-size: 1rem; line-height: 1.5; }
+.sidebarNavigation { display: flex; flex-direction: column; gap: .25rem; width: 100%; }
+.sidebarAction { display: flex; gap: .75rem; align-items: center; min-width: 44px; min-height: 44px; width: 100%; box-sizing: border-box; padding: .5rem; border: 0; border-radius: .75rem; background: none; color: inherit; text-align: left; font: inherit; line-height: 1.5; cursor: pointer; }
+.sidebarAction:hover { background: var(--dsw-alias-daily-glass); }
+.sidebarAction svg { flex: none; }
+.sidebarAction span { overflow-wrap: anywhere; min-width: 0; }
+.dialog { width: min(29rem,100%); max-height: 100%; gap: .5rem; padding-bottom: 1rem; background: var(--dsw-alias-daily-paper); color: var(--dsw-alias-daily-ink); font-size: 1rem; line-height: 1.5;
+  --dsw-alias-label-primary: var(--dsw-alias-daily-ink); --dsw-alias-label-secondary: var(--dsw-alias-daily-muted); --dsw-alias-label-tertiary: var(--dsw-alias-daily-muted); --dsw-alias-label-caption: var(--dsw-alias-daily-muted); }
+.dialogContent { padding: 0; box-sizing: border-box; min-height: 0; overflow-y: auto; }
+.subcopy, .disclaimer, .empty { color: var(--dsw-alias-daily-muted); font-size: 1rem; line-height: 1.5; }
+.disclaimer { margin: 1.5rem 0 0; }
+.empty { padding: 1rem 0; }
+.taskRow { display: flex; flex-wrap: wrap; align-items: center; gap: .625rem; padding: .375rem 0; border-bottom: 1px solid var(--dsw-alias-daily-line); }
+.taskRow .check { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border: 0; padding: 0; background: none; color: var(--dsw-alias-daily-ink); cursor: pointer; }
+.checkMark { display: grid; place-items: center; box-sizing: border-box; width: 20px; height: 20px; border-radius: .375rem; border: 1px solid var(--dsw-alias-daily-focus); font-size: .875rem; line-height: 1; }
+.check[aria-pressed='true'] .checkMark { background: var(--dsw-alias-daily-button); color: var(--dsw-alias-daily-paper); }
+.taskTitle, .done { flex: 1; min-width: 6rem; font-size: 1rem; overflow-wrap: anywhere; }
+.done { text-decoration: line-through; color: var(--dsw-alias-daily-muted); }
+.dialog input, .dialog textarea { min-width: 0; border: 1px solid var(--dsw-alias-daily-line); border-radius: .5625rem; padding: .625rem; background: var(--dsw-alias-daily-glass); color: var(--dsw-alias-daily-ink); font: inherit; font-size: 1rem; line-height: 1.5; outline-color: var(--dsw-alias-daily-focus); color-scheme: light; box-sizing: border-box; }
+.taskRow input { width: 7.5rem; max-width: 100%; }
+.addRow { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
+.addRow input:first-child { flex: 1; min-width: min(10rem,100%); }
+.addRow input[type='time'] { width: 7.5rem; max-width: 100%; }
+.dialog .primary { min-height: 44px; padding: .625rem .875rem; border: 0; border-radius: .5625rem; background: var(--dsw-alias-daily-button); color: var(--dsw-alias-daily-paper); font: inherit; line-height: 1.5; cursor: pointer; }
+.dialog button:disabled { cursor: default; opacity: .45; }
+.bookmarkGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr)); gap: 1rem .75rem; margin-top: 1.25rem; }
+.bookmark { display: flex; flex-direction: column; align-items: center; gap: .625rem; min-width: 0; padding: .5rem .25rem; border-radius: .75rem; color: var(--dsw-alias-daily-ink); text-decoration: none; }
+.bookmark:hover { background: var(--dsw-alias-daily-glass); }
+.bookmark:focus-visible { outline: 2px solid var(--dsw-alias-daily-focus); outline-offset: 2px; }
+.bookmarkIcon { position: relative; display: grid; place-items: center; width: 4rem; height: 4rem; flex: none; border: 1px solid var(--dsw-alias-daily-line); border-radius: 1.125rem; background: var(--dsw-alias-daily-glass); color: var(--dsw-alias-daily-accent); font-size: 1.5rem; font-weight: 500; }
+.bookmarkIcon img { position: absolute; display: block; width: 2rem; height: 2rem; object-fit: contain; opacity: 0; }
+.bookmarkIcon img[data-loaded] { opacity: 1; }
+.bookmarkName { max-width: 100%; text-align: center; font-size: .875rem; line-height: 1.5; overflow-wrap: anywhere; }
+.linkForm { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
+.linkForm input { flex: 1; width: 100%; min-width: min(12rem,100%); }
+.noteForm { display: flex; flex-direction: column; gap: .875rem; align-items: flex-end; }
+.noteForm textarea { width: 100%; min-height: 10rem; resize: vertical; line-height: 1.5; }
+.noteHistory { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--dsw-alias-daily-line); }
+.noteHistory h3 { margin: 0 0 .875rem; font-size: 1rem; line-height: 1.5; font-weight: 500; color: var(--dsw-alias-daily-accent); }
+.noteList { display: flex; flex-direction: column; gap: .75rem; min-width: 0; }
+.memoryRow { display: flex; flex-direction: column; gap: .5rem; min-width: 0; padding: .875rem; border: 1px solid var(--dsw-alias-daily-line); border-radius: .75rem; background: var(--dsw-alias-daily-glass); }
+.memoryRow p { font-size: 1rem; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
+.memoryRow time { font-size: .875rem; color: var(--dsw-alias-daily-muted); }
+.status { min-height: 1.5em; margin: .75rem 0 0; font-size: 1rem; line-height: 1.5; }
+.error { color: var(--dsw-alias-daily-ink); font-size: 1rem; line-height: 1.5; }
+.workspace { display: inline-flex; align-items: center; gap: .25rem; max-width: min(100%,22.5rem); min-height: 44px; padding: 0 .5rem; border: none; border-radius: var(--dsw-radius-sm); background: transparent; color: var(--dsw-alias-label-primary); font-size: 1rem; line-height: 1.5; font-weight: 500; cursor: pointer; }
+.workspace:not(:disabled):hover, .workspace[aria-expanded='true'] { background: var(--dsw-alias-interactive-bg-hover); }
+.workspace:disabled { cursor: default; }
+.folder,.chevron { flex: none; }
+.workspaceLabel { min-width: 0; overflow-wrap: anywhere; }
+@media (prefers-reduced-motion: reduce) { .root * { transition: none !important; animation: none !important; } }
+
+/* Compact personal dialogs preserve a 44px hit target around the smaller mark. */
+.dialogContent { margin-top: .5rem; }
+.dialog .subcopy { margin: 0 0 .5rem; }
+.dialog .disclaimer { margin-top: .75rem; }
+.dialog .status:empty { display: none; }
+.taskRow input, .addRow input { min-height: 44px; padding: .5rem; }
+.addRow { margin-top: .75rem; }
+
+/* Keep each item's title, time and explicit actions aligned without squeezing long titles. */
+.taskRow { display: grid; grid-template-columns: 44px minmax(0, 1fr) 6.5rem 4.5rem; gap: .5rem; }
+.taskContent { min-width: 0; }
+.taskTitle, .done { display: block; min-width: 0; }
+.taskRow .taskTime { width: 100%; }
+.taskActions { display: flex; align-items: center; justify-content: flex-end; }
+.dialog .taskAction { display: grid; place-items: center; width: 36px; height: 44px; flex: none; padding: 0; border: 0; border-radius: .5625rem; background: transparent; color: var(--dsw-alias-daily-muted); cursor: pointer; }
+.dialog .taskAction:not(:disabled):hover { background: var(--dsw-alias-daily-pill); color: var(--dsw-alias-daily-button); }
+.taskEdit { display: flex; flex-direction: column; gap: .375rem; min-width: 0; }
+.dialog .taskEditor { width: 100%; min-height: 44px; padding: .5rem; }
+.taskEditActions { display: flex; flex-wrap: wrap; gap: .375rem; }
+.dialog .taskSave, .dialog .taskCancel { min-height: 36px; padding: .25rem .5rem; border: 0; border-radius: .5625rem; font: inherit; font-size: .875rem; cursor: pointer; }
+.dialog .taskSave { background: var(--dsw-alias-daily-button); color: var(--dsw-alias-daily-paper); }
+.dialog .taskCancel { background: var(--dsw-alias-daily-pill); color: var(--dsw-alias-daily-accent); }
+.dialogContent { container-type: inline-size; }
+@container (max-width: 24rem) {
+  .taskRow { grid-template-columns: 44px minmax(0, 1fr) 4.5rem; }
+  .taskRow .check { grid-column: 1; grid-row: 1 / span 2; align-self: start; }
+  .taskContent { grid-column: 2; grid-row: 1; }
+  .taskRow .taskTime { grid-column: 2; grid-row: 2; width: min(100%, 7.5rem); }
+  .taskActions { grid-column: 3; grid-row: 1 / span 2; align-self: start; }
+}

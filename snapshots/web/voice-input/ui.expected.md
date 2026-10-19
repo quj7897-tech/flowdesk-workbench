@@ -1,0 +1,26 @@
+- banner:
+  - button "Open right sidebar"
+- region "Personal workspace":
+  - text: Personal workspace
+  - group "Inspiration study":
+    - button "Build" [pressed]
+    - button "Explore"
+    - button "Create"
+  - text: Preview OKOK DEEPSEEK HARNESS / 01
+  - heading "Give your ideas room." [level=1]
+  - text: From a first thought to your next creation.
+  - button "01 / BUILD Build something new Websites, apps, and your next big idea"
+  - button "02 / EXPLORE Explore & connect Gather your sources. Find the connections."
+  - text: IDEAS IN MOTION STUDY — 001 YOUR NEXT POSSIBILITY
+  - heading "Build" [level=2]
+  - paragraph: A new possibility starts with a conversation.
+  - text: 01 / 03 A space for ideas to become real. Choose a workspace to begin ↘
+- button "Choose workspace": workspace
+- button "Standard mode"
+- textbox "Describe what you want to build, / commands, @ files or sessions":
+  - paragraph: "Use the bash tool to run exactly: echo WEB_E2E_OK. Then reply with the single word DONE and stop."
+- button "Add files or run commands"
+- 'button "Access mode, current: Workspace Write"': Workspace Write
+- button "Select model, current DeepSeek-V4-Flash": DeepSeek-V4-Flash
+- button "Start recording"
+- button "Send message"
