@@ -1,9 +1,13 @@
 /** Personal records are independent of Session plans, settings, and model memory. */
 export const DAILY_RECORDS_KEY = 'dsh.personal-workbench.v1'
 
+/** A personal to-do with an optional planned time and completion state. */
 export interface DailyTask { id: string; title: string; time: string; done: boolean }
+/** A named HTTP or HTTPS website shortcut. */
 export interface DailyLink { id: string; name: string; url: string }
+/** A saved plain-text thought with its original creation timestamp. */
 export interface DailyNote { id: string; text: string; created: number }
+/** The versioned local document shared by the personal organizer views. */
 export interface DailyRecords {
   version: 1
   revision: number
@@ -12,7 +16,11 @@ export interface DailyRecords {
   notes: DailyNote[]
 }
 
-/** Accept only ordinary web links; reject executable and local-file URLs. */
+/**
+ * Accept only ordinary web links; reject executable and local-file URLs.
+ * @param value - User-entered website URL.
+ * @returns the normalized web URL, or undefined for a rejected URL.
+ */
 export function dailyURL(value: string): string | undefined {
   try {
     const url = new URL(value)
@@ -31,7 +39,11 @@ function text(value: unknown, max: number): value is string {
   return typeof value === 'string' && value.length > 0 && value.length <= max
 }
 
-/** Reject an incompatible document in full rather than replacing stored records. */
+/**
+ * Reject an incompatible document in full rather than replacing stored records.
+ * @param raw - Stored document bytes, or null when no personal records exist.
+ * @returns validated records, or undefined when the stored document cannot be read.
+ */
 export function parseDailyRecords(raw: string | null): DailyRecords | undefined {
   if (raw === null) return { version: 1, revision: 0, tasks: [], links: [], notes: [] }
   let value: unknown

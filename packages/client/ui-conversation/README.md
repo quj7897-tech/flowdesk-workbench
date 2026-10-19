@@ -13,17 +13,17 @@ Desktop product events use the optional [product analytics service](../product-a
 
 The blank-session workbench embeds the approved offline character artwork and user-supplied Flowdesk wordmark. Bounded pupils follow the pointer with damping; reduced motion, blur, and unmount stop or reset the animation. Personal to-dos, website bookmarks, and notes use the separate `dsh.personal-workbench.v1` browser-storage document with empty defaults, strict parsing, revision conflict checks, and visible save failures. Quick note shows every saved entry below the editor, newest first, with its complete text and original timestamp; entries remain after closing or restarting the app. The same notes appear under Saved memories but are not injected into model memory; planned times do not create notifications. Existing Session plans, data, navigation, workspace selection, and the resident composer remain independent. Clearing application browsing data removes personal records.
 
-The character uses the full homepage canvas again, with a clear gap between its crown and the Flowdesk wordmark even in wide windows; excess artwork continues behind the light lavender-white composer. Workspace and preset controls use the existing composer accessory slot. The homepage input keeps its paper palette in both themes, with readable placeholder ink and visible keyboard focus.
+The character uses the full homepage canvas, with a clear gap between its crown and the Flowdesk wordmark even in wide windows; excess artwork continues behind the light lavender-white composer. Workspace and preset controls use the existing composer accessory slot. The homepage input keeps its paper palette in both themes, with readable placeholder ink and visible keyboard focus.
 
 The homepage resident titlebar uses the paper surface while preserving native controls and drag regions. Artwork keeps one 75% width rule at all breakpoints; stacked layouts reserve the full SVG aspect ratio instead of clipping the head. Pupils map screen input through the inverse SVG matrix and reset on resize. Personal dialogs use a narrower frame and 20px check marks inside 44px controls.
 
 The work-companion homepage follows the supplied reference copy and lavender capsule hierarchy. Its three homepage shortcuts are removed; all personal tools remain in the hover sidebar. The composer keeps live model configuration and uses lavender controls, a double purple stroke, soft shadow and bottom breathing room.
 
+Each personal to-do has explicit edit and delete actions. Editing keeps a local title draft with Save/Cancel and Enter/Escape handling; successful saves preserve the id, completion state and planned time. Failed or conflicting writes retain the draft or existing row. Only the selected task is removed on deletion, and narrow dialogs put time below the title.
+
 ## Summary
 
 `ui-conversation` owns target-neutral Conversation assembly and the shared browser shell. It consumes Session Controller `SessionEventLikeEntry` feeds, exposes React-free registries and per-Session bindings through `ctx.uiConversation`, and contributes the `useConversation`, `useInput`, and `inputActions` standard props through `ctx.uiSession`. It also owns the per-session durable image URL cache: `ctx.uiConversation.imageUrl(sessionId, attachment)` resolves one session-authorized browser URL per attachment and revokes it with the Session binding, so every Conversation target shares one `session.attachment` read. Concrete targets such as Chat are separate packages that register their own Definitions, snapshot builders, Views, and renderers.
-
-Each personal to-do has explicit edit and delete actions. Editing keeps a local title draft with Save/Cancel and Enter/Escape handling; successful saves preserve the id, completion state and planned time. Failed or conflicting writes retain the draft or existing row. Only the selected task is removed on deletion, and narrow dialogs put time below the title.
 
 ## Table of Contents
 

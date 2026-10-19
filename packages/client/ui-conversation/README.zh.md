@@ -7,21 +7,23 @@ kind: "package-reference"
 
 [English](README.md) | 中文
 
+人物两侧文案使用等宽网格，共享顶部基线与垂直节奏，中间列保留人物安全区域。窄窗口时文案与人物纵向重排，避免遮挡。瞳孔跟随和独立个人存储保持不变。
+
 桌面端产品事件使用可选的[产品埋点服务](../product-analytics/README.zh.md)，不包含普通 Web 交互。
 
-空白会话工作台采用响应式卡片布局，提供任务草稿入口和可切换的 CSS 玻璃装置。任务入口在当前光标处插入草稿，不自动发送；未选择工作区时打开工作区选择器。开始对话时输入框保持原有 DOM 节点。装置动效遵循减少动态效果的系统设置。
+空白会话首页使用已确认的离线角色素材与用户提供的 Flowdesk 字标。瞳孔以限幅缓动跟随指针，遵循减少动态效果设置，离开、失焦及卸载时复位或取消动画。个人待办、收藏和随记独立保存在 `dsh.personal-workbench.v1` 浏览器存储文档中，初始为空，校验完整文档并拒绝冲突写入，保存失败时保留输入。随手记在输入框下方持续显示全部记录，按新到旧排列，保留完整内容与原始时间，关闭或重启应用后仍可查看。记忆管理展示同一份随记，不会注入模型记忆；计划时间不创建系统通知。原会话任务、数据、导航、工作区选择和常驻输入框保持独立。清除应用浏览数据会移除个人记录。
 
-人物恢复整幅首页画布尺度，底端直接衔接浅紫白输入框。工作区与模式入口复用输入框已有的 accessory 扩展位置。首页输入框在两种主题下保持浅色，保留清晰占位文字与键盘焦点。
+人物使用整幅首页画布尺度，角色头顶与 Flowdesk 字标之间保留清晰间距，宽窗口中头顶仍完整展示，下方多余画面延伸至浅紫白输入框后方。工作区与模式入口复用输入框已有的 accessory 扩展位置。首页输入框在两种主题下保持浅色，保留清晰占位文字与键盘焦点。
 
 首页常驻标题区使用纸面底色，保留原生窗口按钮和拖动区域。人物在各断点统一使用75%画布宽度，纵向布局为完整SVG比例预留空间，不裁掉头顶。瞳孔使用SVG逆矩阵换算指针坐标，窗口变化时复位。个人弹窗收窄，20px复选标记仍保留44px点击区域。
 
 工作搭档首页采用用户目标图文案与紫色胶囊层级。首页三个快捷图标移除，全部个人功能仍保留在悬停侧栏。输入框保留真实模型配置，采用浅紫控件、紫色双描边、柔和阴影和底部留白。
 
+每条个人待办提供独立的编辑与删除操作。编辑使用本地标题草稿，支持保存、取消及 Enter/Escape；保存后保留原 id、完成状态和计划时间。写入失败或冲突时保留草稿及原记录。删除只移除选中的待办，窄弹窗会将时间放到标题下方。
+
 ## 概述
 
 `ui-conversation` 拥有与 target 无关的 Conversation 组装和共享浏览器 shell。它消费 Session Controller 的 `SessionEventLikeEntry` feed，通过 `ctx.uiConversation` 暴露不依赖 React 的注册表与逐 Session binding，并通过 `ctx.uiSession` 提供 `useConversation`、`useInput` 和 `inputActions` 标准 props。它还拥有按会话的持久化图片 URL 缓存：`ctx.uiConversation.imageUrl(sessionId, attachment)` 为每个附件解析一个经会话授权的浏览器 URL，并随 Session binding 释放而撤销，因此所有 Conversation target 共享一次 `session.attachment` 读取。Chat 等具体 target 位于独立包，由各自包注册 Definition、快照 builder、View 和 renderer。
-
-每条个人待办提供独立的编辑与删除操作。编辑使用本地标题草稿，支持保存、取消及 Enter/Escape；保存后保留原 id、完成状态和计划时间。写入失败或冲突时保留草稿及原记录。删除只移除选中的待办，窄弹窗会将时间放到标题下方。
 
 ## 目录
 
@@ -62,8 +64,6 @@ target package 通过 declaration merge 扩展 snapshot 与 Location data map，
 <a id="shell-and-standard-props"></a>
 ## Shell 与标准 props
 
-空白会话首页使用已确认的离线角色素材与原字标。瞳孔以限幅缓动跟随指针，支持暂停和减少动态效果，离开、失焦及卸载时复位或取消动画。个人待办、收藏和随记独立保存在 `dsh.personal-workbench.v1` 浏览器存储文档中，初始为空，校验完整文档并拒绝冲突写入，保存失败时保留输入。随手记在输入框下方持续显示全部记录，按新到旧排列，保留完整内容与原始时间，关闭或重启应用后仍可查看。记忆管理展示同一份随记，不会注入模型记忆；计划时间不创建系统通知。原会话任务、数据、导航、工作区选择和常驻输入框保持独立。清除应用浏览数据会移除个人记录。
-
 共享图片插槽属性将展示选择与持久化引用分开：`thumbnail` 请求完整缩放的附件列表缩略图，`compact` 请求裁剪的图片方块。每张图片可通过可选的 `label` 提供无障碍展示名称；加载和缓存标识仍使用原始附件引用。[ui-attachment](../ui-attachment/README.zh.md) 负责渲染与灯箱。
 
 控件组的尺寸、内容、可见性或字体加载状态变化后，composer 测量展开状态下的控件组。若无法排在同一行，控制栏为模型位设置 `--dsh-composer-model-text-display: none` 和 `--dsh-composer-model-icon-display: block`；两者默认值分别为 `block` 和 `none`。若连图标也放不下，仍允许换行。
@@ -72,7 +72,7 @@ target package 通过 declaration merge 扩展 snapshot 与 Location data map，
 
 关闭代码工作工具时，外壳仅隐藏 Trajectory；其他插件贡献的 View 仍然可用。可用 View 少于两个时隐藏 View 标签栏。在 Trajectory 激活时关闭代码工作工具会返回 Chat；已保存的 View 偏好和 Session 记录保持不变。开启后，Trajectory 恢复可用。View 所有者接收可用列表，使导航操作跟随相同的可见性。
 
-输入框注册「文件」命令动作，负责其标题、可用性和原生文件选择器回调。菜单可用性与实际调用都读取已挂载输入框当前的附件接收策略。输入框卸载或锁定后该动作不可用，插件 dispose（资源释放）时移除注册。回调绑定留在输入模块内部。
+输入框插槽仅在对话服务就绪后注册，插件重新加载时也遵循这一顺序。输入框注册「文件」命令动作，负责其标题、可用性和原生文件选择器回调。菜单可用性与实际调用都读取已挂载输入框当前的附件接收策略。输入框卸载或锁定后该动作不可用，插件 dispose（资源释放）时移除注册。回调绑定留在输入模块内部。
 
 `SessionInputShell` 通过私有 [DraftEditorRuntime](src/client/input/editor/runtime.ts) 为每个 Session 持有一个 Lexical editor，同时保留提交、附件选择和恢复决策。[DraftEditor](src/client/input/editor/DraftEditor.tsx) 呈现借用的 editor；InputBar 保留钩子与 refs，并通过 [view-binding](src/client/input/editor/view-binding.ts) 安装 DOM 行为。编辑器类型位于 [draft-editor.ts](src/client/contract/draft-editor.ts)，共享输入和提交类型位于 [input.ts](src/client/contract/input.ts)。编辑器后台更新会保留草稿选区，不修改文档选区或从其他控件夺回焦点；显式聚焦 Composer 时恢复其选区。这一拆分不支持同一 Session 同时挂载多个可编辑 root；[两阶段隔离提案](../../../.agents/notes/proposed/architecture/2026-09-14-composer-model-and-draft-editor.zh.md) 定义剩余工作。
 
@@ -192,12 +192,6 @@ selector 必须是 owner currency 的纯函数。非 null 返回值作为 `match
 </details>
 
 个人功能注册到侧栏底部，沿用同一份个人记录。首页自动跟随指针并尊重系统减少动态效果设置，不再提供暂停按钮。文字和弹窗使用相对字号、自然换行和可见焦点，狭窗口内容可滚动。本次仅对修改部分按 WCAG 2.2 AA 相关要求检查，不表示整个应用已通过认证。
-
-人物两侧文案使用等宽网格，共享顶部基线与垂直节奏，中间列保留人物安全区域。窄窗口时文案与人物纵向重排，避免遮挡。瞳孔跟随和独立个人存储保持不变。
-
-首页使用用户提供的 Flowdesk 标志；角色头顶与标志之间保留清晰间距，宽窗口中头顶仍完整展示，超出的下方画面延伸至输入框后方。
-
-输入框插槽仅在对话服务就绪后注册，并随服务一起卸载和恢复，避免插件重新加载时输入框因初始化错误而消失。
 
 首页将 1440 × 860 的设计画布等比例适配到可用窗口区域。调整窗口尺寸或页面缩放时，三栏介绍、角色与输入框保持相对位置；展开的长草稿仍可滚动。
 

@@ -107,5 +107,3 @@ These limits define the current layout behavior. They are current package constr
 None.
 
 </details>
-
-A new layout starts with the sidebar collapsed. macOS retains a 72px icon rail below native window controls, including in fullscreen; the main column no longer hosts duplicate collapsed-sidebar controls.

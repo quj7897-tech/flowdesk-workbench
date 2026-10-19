@@ -118,6 +118,6 @@ None.
 
 </details>
 
-The sidebar starts as an icon rail and expands on pointer entry or keyboard focus. It closes after leaving only when focus, a pointer gesture, menus, and dialogs are absent. Personal tools open the existing organizer; Session and Workspace navigation remain available. The local build-number badge is omitted.
+The sidebar starts collapsed and expands on pointer entry or keyboard focus. It closes after leaving only when focus, a pointer gesture, menus, and dialogs are absent. Personal tools open the existing organizer; Session and Workspace navigation remain available. The local build-number badge is omitted.
 
 The personal-workbench sidebar lets its workspace region shrink to a 44px minimum before scrolling the whole panel. Short-window overflow uses an inset scrollbar in the workbench palette; nested workspace scrolling remains available.

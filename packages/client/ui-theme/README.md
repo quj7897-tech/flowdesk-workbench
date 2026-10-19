@@ -7,7 +7,7 @@ kind: "package-reference"
 
 English | [中文](README.zh.md)
 
-The workbench stylesheet owns the sage, charcoal, and citron material tokens. The dark appearance applies these colors to shared navigation and input surfaces; the decorative workbench canvas keeps its dark material in both appearances.
+The workbench stylesheet owns the lavender paper, purple ink, border, and glass material tokens. The personal homepage and its navigation and input surfaces keep the same pale palette in both appearances.
 
 The workbench mouse hides the native arrow and hand, using a lavender center dot with a softly trailing circular halo and a quiet click ripple. Editing and resize gestures retain native cursors; touch, reduced-motion preferences, keyboard input and window exits hide the follower. The theme plugin owns the decoration, listeners and animation frame, and removes them on unload or HMR.
 
